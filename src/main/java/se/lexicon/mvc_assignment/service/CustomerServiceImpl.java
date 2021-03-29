@@ -14,6 +14,12 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
     public CustomerDto saveOrUpdate(CustomerDto customerDto) {
