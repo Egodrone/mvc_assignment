@@ -1,0 +1,20 @@
+body {
+    background-color: #e4f3ec;
+}
+
+#nav_img {
+    width: 40px;
+}
+
+.container {
+    height: 600px;
+    margin-top: 50px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+}
+
