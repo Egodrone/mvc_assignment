@@ -23,6 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto saveOrUpdate(CustomerDto customerDto) {
+        if (customerDto == null) throw new IllegalArgumentException("customerDto is not valid");
         return null;
     }
 

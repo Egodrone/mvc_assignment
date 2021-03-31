@@ -5,11 +5,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 
 
 public class CustomerDto {
-    private UUID customerId;
+    private String customerId;
     @NotEmpty(message = "Field cannot be empty")
     @Size(min = 6,max = 35, message = "Has to be in 6-35 characters range")
     private String email;
@@ -20,7 +19,7 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
-    public CustomerDto(UUID customerId, String email, LocalDate regDate, boolean active, CustomerDetailsDto customerDetailsDto) {
+    public CustomerDto(String customerId, String email, LocalDate regDate, boolean active, CustomerDetailsDto customerDetailsDto) {
         this.customerId = customerId;
         this.email = email;
         this.regDate = regDate;
@@ -28,11 +27,11 @@ public class CustomerDto {
         this.customerDetailsDto = customerDetailsDto;
     }
 
-    public UUID getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(UUID customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 

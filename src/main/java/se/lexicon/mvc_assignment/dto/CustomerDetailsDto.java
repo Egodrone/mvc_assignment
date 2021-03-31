@@ -2,11 +2,10 @@ package se.lexicon.mvc_assignment.dto;
 
 
 import java.util.Objects;
-import java.util.UUID;
 
 
 public class CustomerDetailsDto {
-    private UUID detailsId;
+    private String detailsId;
     private String street;
     private String zipCode;
     private String city;
@@ -17,7 +16,7 @@ public class CustomerDetailsDto {
     public CustomerDetailsDto() {
     }
 
-    public CustomerDetailsDto(UUID detailsId, String street, String zipCode, String city, String homePhone, String cellphone) {
+    public CustomerDetailsDto(String detailsId, String street, String zipCode, String city, String homePhone, String cellphone) {
         this.detailsId = detailsId;
         this.street = street;
         this.zipCode = zipCode;
@@ -26,11 +25,11 @@ public class CustomerDetailsDto {
         this.cellphone = cellphone;
     }
 
-    public UUID getDetailsId() {
+    public String getDetailsId() {
         return detailsId;
     }
 
-    public void setDetailsId(UUID detailsId) {
+    public void setDetailsId(String detailsId) {
         this.detailsId = detailsId;
     }
 

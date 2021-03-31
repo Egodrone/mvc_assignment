@@ -1,6 +1,7 @@
 package se.lexicon.mvc_assignment.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import se.lexicon.mvc_assignment.dto.CustomerDetailsDto;
 import se.lexicon.mvc_assignment.dto.CustomerDto;
 import se.lexicon.mvc_assignment.entity.Customer;
 import se.lexicon.mvc_assignment.entity.CustomerDetails;
+import se.lexicon.mvc_assignment.service.CustomerService;
 
 
 import javax.annotation.PostConstruct;
@@ -25,6 +27,7 @@ import java.util.List;
 public class HomeController {
     List<CustomerDto> customerDtoList;
     List<CustomerDetailsDto> customerDetailsDtoList;
+    CustomerService customerService;
 
     @PostConstruct
     public void init() {
@@ -41,6 +44,10 @@ public class HomeController {
         CustomerDetails customerDetails = new CustomerDetails();
     }
 
+    @Autowired
+    public void setCustomerService(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping("/index")
     public String index() {
@@ -82,6 +89,8 @@ public class HomeController {
 
         customerDtoList.add(customerDto);
         System.out.println(customerDtoList.toString());
+        // save to the db
+        customerService.saveOrUpdate(customerDto);
         //maybe redirect to the page where all details are
         return "redirect:/customer/";
     }
