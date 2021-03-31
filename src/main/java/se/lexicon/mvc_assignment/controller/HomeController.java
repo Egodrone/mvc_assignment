@@ -3,9 +3,12 @@ package se.lexicon.mvc_assignment.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.lexicon.mvc_assignment.dto.CustomerDetailsDto;
 import se.lexicon.mvc_assignment.dto.CustomerDto;
 import se.lexicon.mvc_assignment.entity.Customer;
@@ -13,6 +16,7 @@ import se.lexicon.mvc_assignment.entity.CustomerDetails;
 
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,9 +70,19 @@ public class HomeController {
     */
 
     @PostMapping("/customer")
-    public String add(@ModelAttribute("dto") CustomerDto customerDto) {
+    public String add(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult,
+                      RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()){
+            System.out.println(bindingResult.toString());
+            FieldError error = new FieldError("dto","email","Email should not contain less than 6 or more than 35 characters");
+            bindingResult.addError(error);
+            return "/customer";
+        }
+
         customerDtoList.add(customerDto);
         System.out.println(customerDtoList.toString());
+        //maybe redirect to the page where all details are
         return "redirect:/customer/";
     }
 
