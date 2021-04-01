@@ -161,8 +161,8 @@ public class HomeController {
         System.out.println("Create new Customer");
 
         if (!customerDto.getEmail().equals("")) {
-            System.out.println(customerDto.toString());
-            System.out.println(customerDto.getCustomerDetailsDto().getStreet());
+            //System.out.println(customerDto.toString());
+            //System.out.println(customerDto.getCustomerDetailsDto().getStreet());
             System.out.println("\n");
             System.out.println(customerDto.getEmail());
 
@@ -174,11 +174,11 @@ public class HomeController {
             String id = "123e4567-e89b-12d3-a456-556642440000";
             customerDto.setCustomerId(id);
             customerDto.setRegDate(LocalDate.now());
-            //customerDto.setCustomerDetailsDto(customerDto.getCustomerDetailsDto());
 
+            System.out.println(customerDto.toString());
+            System.out.println(customerDto.getCustomerDetailsDto().getStreet());
 
-
-
+            customerService.saveOrUpdate(customerDto);
             //customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), customerDto.getRegDate(), true, customerDto.getCustomerDetailsDto()));
         }
 
