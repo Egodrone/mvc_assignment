@@ -1,5 +1,6 @@
 body {
     background-color: #e4f3ec;
+    background-image: url("../Kyvalda.png");
 }
 
 #nav_img {
@@ -9,6 +10,21 @@ body {
 .container {
     height: 600px;
     margin-top: 50px;
+    border-radius: 10px;
+}
+
+.indexContainer {
+    height: 600px;
+    margin-top: 50px;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.customerContainer {
+    height: 600px;
+    margin-top: 50px;
+    opacity: 0.9;
+    border-radius: 10px;
 }
 
 footer {

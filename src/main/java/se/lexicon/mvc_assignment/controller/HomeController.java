@@ -60,27 +60,6 @@ public class HomeController {
     }
 
 
-    /*
-    @PostMapping(path = "/customer")
-    public String email(@RequestParam String email, @RequestParam String street) {
-        System.out.println("***********");
-        System.out.println("email = " + email);
-        System.out.println("street = " + street);
-        System.out.println("***********");
-
-        if (street == "") {
-            //len, chars etc
-            System.out.println("You need to write a street name");
-        }
-
-        String result = (street == "") ? " You need to write a street name" : " OK ";
-
-        System.out.println(result);
-
-        return "redirect:/customer/";
-    }
-    */
-
     @PostMapping("/customer")
     public String add(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult,
                       RedirectAttributes redirectAttributes) {
@@ -119,7 +98,6 @@ public class HomeController {
         customerDetailsDto.setCity(city);
 
         // save to the db
-        //null pointer
         //customerService.saveOrUpdate(customerDto);
         customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), today, true, customerDetailsDto));
         //maybe redirect to the page where all details are
@@ -147,29 +125,17 @@ public class HomeController {
     }
 
 
-    /*
-    @PostMapping("/details")
-    public String addDetails(@ModelAttribute("dto") CustomerDetailsDto customerDetailsDto) {
-        customerDetailsDtoList.add(customerDetailsDto);
-        System.out.println(customerDetailsDtoList.toString());
-        return "redirect:/details/";
-    }
-     */
-
     @PostMapping("/details")
     public String addDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Create new Customer");
 
         if (!customerDto.getEmail().equals("")) {
-            //System.out.println(customerDto.toString());
-            //System.out.println(customerDto.getCustomerDetailsDto().getStreet());
             System.out.println("\n");
             System.out.println(customerDto.getEmail());
 
-            //customerService.saveOrUpdate(customerDto);
-
             customerDto.setEmail(customerDto.getEmail());
             customerDto.setActive(true);
+
             //default UUID it will be overwritten on insert
             String id = "123e4567-e89b-12d3-a456-556642440000";
             customerDto.setCustomerId(id);
@@ -179,18 +145,13 @@ public class HomeController {
             System.out.println(customerDto.getCustomerDetailsDto().getStreet());
 
             customerService.saveOrUpdate(customerDto);
-            //customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), customerDto.getRegDate(), true, customerDto.getCustomerDetailsDto()));
         }
-
-
 
         /*
         if (bindingResult.hasErrors()) {
             return "/details";
         }
         */
-
-        //customerService.saveOrUpdate(customerDto);
 
         return "redirect:/customer/";
     }
