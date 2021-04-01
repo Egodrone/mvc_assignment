@@ -139,17 +139,38 @@ public class HomeController {
 
     @GetMapping("/details")
     public String details(Model model) {
-        System.out.println("--- GetMapping ---");
+        System.out.println("--- GetMapping details ---");
         return "details";
     }
 
 
+    /*
     @PostMapping("/details")
     public String addDetails(@ModelAttribute("dto") CustomerDetailsDto customerDetailsDto) {
         customerDetailsDtoList.add(customerDetailsDto);
         System.out.println(customerDetailsDtoList.toString());
         return "redirect:/details/";
     }
+     */
+
+    @PostMapping("/details")
+    public String addDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        System.out.println("Create new Customer");
+
+        if (!customerDto.getEmail().equals("")) {
+
+        }
+
+        /*
+        if (bindingResult.hasErrors()) {
+            return "/details";
+        }
+        */
+
+        return "redirect:/customer/";
+    }
+
+
 
 
     @GetMapping("/customer/delete/{id}")

@@ -12,14 +12,19 @@
 <div class="container">
     <div class="card">
         <div class="card-header bg-info">
-            <h2> Register a new Customer: </h2>
+            <h2> Register new customer: </h2>
         </div>
 
         <div class="card-body">
-            <form th:action="@{/details}" method="post">
+            <form th:action="@{/details}" method="post" th:object="${dto}">
 
                 <div class="col-sm-12">
                     <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label for="email"> Email: </label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                        </div>
+
                         <div class="col-sm-6 form-group">
                             <label for="street"> Street: </label>
                             <input type="text" class="form-control" id="street" placeholder="Street Name" name="street">
