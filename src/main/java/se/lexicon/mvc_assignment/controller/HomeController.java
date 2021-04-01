@@ -161,4 +161,15 @@ public class HomeController {
     }
 
 
+    //customer Details
+    @GetMapping("/customer/find/{id}")
+    public String getProductById(@PathVariable("id") String id, Model model) {
+        System.out.println("ID: " + id);
+        CustomerDto optionalCustomerDto = customerService.findById(id);
+        model.addAttribute("productDto", optionalCustomerDto);
+
+        return "customerDetails";
+    }
+
+
 }

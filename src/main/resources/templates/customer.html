@@ -52,7 +52,7 @@
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-info" >Details</a>
+                        <a href="#" class="btn btn-info" th:href="@{/customer/find/{id} (id=${customerDto.getCustomerId()})}"> Details</a>
                     </td>
                     <td>
                         <a href="#" class="btn btn-warning" >Edit</a>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/headerResources :: header_resources"></head>
+
+
+<body>
+<!-- header -->
+<nav th:insert="fragments/navbar :: nav_fragment"></nav>
+
+
+<!-- main container -->
+<div class="container">
+    <div class="card">
+        <div class="card-header card bg-info text-white">
+            <h2> Customer Details </h2>
+            <p>
+                <a th:href="@{/customer}" class="btn btn-dark text-white"> Go back </a>
+            </p>
+        </div>
+    </div>
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <div>
+                    <p>ID: <span ></span></p>
+                </div>
+
+
+            </div>
+
+            <div class="card-footer">
+                <a href="#" class="btn btn-danger">Back</a>
+            </div>
+        </div>
+</div>
+
+
+
+<!-- footer -->
+<footer th:insert="fragments/footer :: footer_fragment"></footer>
+
+</body>
+</html>
