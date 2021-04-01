@@ -100,7 +100,8 @@ public class HomeController {
         customerDto.setActive(true);
         String id = "123e4567-e89b-12d3-a456-556642440000";
         customerDto.setCustomerId(id);
-        LocalDate today = LocalDate.parse("2021-03-31");
+        LocalDate today = LocalDate.now();
+        //LocalDate.parse("2021-03-31");
         customerDto.setRegDate(today);
         customerDto.getCustomerDetailsDto();
 
