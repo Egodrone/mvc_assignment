@@ -32,24 +32,24 @@
 
                         <div class="col-sm-6 form-group">
                             <label for="zipCode"> Zip Code: </label>
-                            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" name="zipCode">
+                            <input type="text" th:field="*{customerDetailsDto.zipCode}" class="form-control" id="zipCode" placeholder="Zip Code" name="zipCode">
                         </div>
 
                         <div class="col-sm-6 form-group">
                             <label for="city"> City: </label>
-                            <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                            <input type="text" th:field="*{customerDetailsDto.city}" class="form-control" id="city" placeholder="City" name="city">
                         </div>
 
                         <div class="col-sm-6 form-group">
                             <label for="homePhone"> Home phone: </label>
-                            <input type="text" class="form-control" id="homePhone" placeholder="Home phone"
+                            <input type="text" th:field="*{customerDetailsDto.homePhone}" class="form-control" id="homePhone" placeholder="Home phone"
                                    name="homePhone">
                         </div>
 
 
                         <div class="col-sm-6 form-group">
                             <label for="cellphone"> Mobile: </label>
-                            <input type="text" class="form-control" id="cellphone" placeholder="Mobile phone"
+                            <input type="text" th:field="*{customerDetailsDto.cellphone}" class="form-control" id="cellphone" placeholder="Mobile phone"
                                    name="cellphone">
                         </div>
                     </div>
