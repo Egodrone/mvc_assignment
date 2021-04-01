@@ -9,6 +9,6 @@ import java.util.List;
 
 
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
-
+    List<Customer> findByNameIgnoreCase(String name);
     List<Customer> findAll();
 }

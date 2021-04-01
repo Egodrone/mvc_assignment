@@ -10,6 +10,7 @@ import se.lexicon.mvc_assignment.entity.Customer;
 import se.lexicon.mvc_assignment.repository.CustomerRepository;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,22 +46,37 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDto> getAll() {
-        return null;
+        Iterable<Customer> iterable = customerRepository.findAll();
+        List<Customer> customerList = new ArrayList<>();
+        iterable.iterator().forEachRemaining(customerList::add);
+
+        return new ArrayList<>(customerConverter.toDTos(customerList));
     }
 
 
     @Override
     public CustomerDto findById(int id) {
-        return null;
+        if (id == 0) throw new IllegalArgumentException("Id should not be null");
+        Customer customer = customerRepository.findById(id).orElse(null);
+
+        return customerConverter.toDTO(customer);
     }
+
 
     @Override
     public void deleteById(int id) {
-
+        if (id == 0) throw new IllegalArgumentException("Id should not be null");
+        customerRepository.deleteById(id);
     }
+
 
     @Override
     public List<CustomerDto> findByName(String name) {
-        return null;
+        if (name == null) throw new IllegalArgumentException("Name should not be null");
+        List<Customer> customerList = customerRepository.findByNameIgnoreCase(name);
+
+        return new ArrayList<>(customerConverter.toDTos(customerList));
     }
+
+
 }
