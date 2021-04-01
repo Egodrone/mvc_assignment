@@ -121,6 +121,8 @@ public class HomeController {
         //customerService.saveOrUpdate(customerDto);
         customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), today, true, customerDetailsDto));
         //maybe redirect to the page where all details are
+        redirectAttributes.addFlashAttribute("message", "Add Product Name: " + customerDto.getEmail() + " is Done");
+        redirectAttributes.addFlashAttribute("alertClass","alert-success");
         return "redirect:/customer/";
     }
 
@@ -128,6 +130,7 @@ public class HomeController {
     @GetMapping("/customer")
     public String customer(Model model) {
         System.out.println("--- GetMapping ---");
+        model.addAttribute("customerDtoList", customerService.getAll());
         return "customer";
     }
 

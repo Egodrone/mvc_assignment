@@ -18,6 +18,14 @@
             </p>
         </div>
 
+        <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+
+        <div class="card-body">
+            <div th:if="${customerDtoList.isEmpty()}" >
+                No Customers are Available
+            </div>
+        </div>
+
     </div>
 
 
