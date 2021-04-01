@@ -24,22 +24,6 @@ public class Customer {
     private LocalDate regDate;
     @Column(nullable = false)
     private boolean active;
-
-    /*
-    @ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "customer_details_details_id")
-    */
-    /*
-    @OneToMany(fetch = FetchType.EAGER,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "customer",
-            orphanRemoval = true
-    )*/
-    /*
-    @ManyToOne(fetch = FetchType.EAGER,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "customer_details_details_id")*/
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private CustomerDetails customerDetails;
 

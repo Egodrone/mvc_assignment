@@ -30,6 +30,7 @@ public class HomeController {
     List<CustomerDetailsDto> customerDetailsDtoList;
     CustomerService customerService;
 
+
     @PostConstruct
     public void init() {
         if (customerDtoList == null) customerDtoList = new ArrayList<>();
@@ -50,6 +51,7 @@ public class HomeController {
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
+
 
     @GetMapping("/index")
     public String index() {

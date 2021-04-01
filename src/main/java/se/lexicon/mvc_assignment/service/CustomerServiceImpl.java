@@ -43,7 +43,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customerConverter.toDTO(savedObject);
     }
 
-
     @Override
     public List<CustomerDto> getAll() {
         Iterable<Customer> iterable = customerRepository.findAll();
@@ -72,10 +71,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDto> findByName(String name) {
+        /*
         if (name == null) throw new IllegalArgumentException("Name should not be null");
         List<Customer> customerList = customerRepository.findByNameIgnoreCase(name);
 
         return new ArrayList<>(customerConverter.toDTos(customerList));
+         */
+        return null;
     }
 
 
