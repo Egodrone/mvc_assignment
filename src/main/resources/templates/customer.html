@@ -32,6 +32,11 @@
                 <tr>
                     <th th:text="#{customer.id.label}"></th>
                     <th th:text="#{customer.email.label}"></th>
+                    <th th:text="#{customer.regDate.label}"></th>
+
+                    <th>Details</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,8 +47,20 @@
                     <td>
                         <span th:text="${customerDto.getEmail()}"></span>
                     </td>
-                </tr>
+                    <td>
+                        <span th:text="${customerDto.getRegDate()}"></span>
+                    </td>
 
+                    <td>
+                        <a href="#" class="btn btn-info" >Details</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-warning" >Edit</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger" th:href="@{/customer/delete/{id} (id=${customerDto.getCustomerId()})}"> Delete</a>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

@@ -12,9 +12,9 @@ public interface CustomerService {
 
     List<CustomerDto> getAll();
 
-    CustomerDto findById(int id);
+    CustomerDto findById(String id);
 
-    void deleteById(int id);
+    void deleteById(String id);
 
     List<CustomerDto> findByName(String name);
 }

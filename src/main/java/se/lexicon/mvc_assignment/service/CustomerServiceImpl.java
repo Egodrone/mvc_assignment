@@ -54,8 +54,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public CustomerDto findById(int id) {
-        if (id == 0) throw new IllegalArgumentException("Id should not be null");
+    public CustomerDto findById(String id) {
+        if (id == null) throw new IllegalArgumentException("Id should not be null");
         Customer customer = customerRepository.findById(id).orElse(null);
 
         return customerConverter.toDTO(customer);
@@ -63,8 +63,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public void deleteById(int id) {
-        if (id == 0) throw new IllegalArgumentException("Id should not be null");
+    public void deleteById(String id) {
+        if (id == null) throw new IllegalArgumentException("Id should not be null");
         customerRepository.deleteById(id);
     }
 

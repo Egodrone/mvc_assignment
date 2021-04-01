@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.lexicon.mvc_assignment.dto.CustomerDetailsDto;
@@ -122,7 +123,7 @@ public class HomeController {
         //customerService.saveOrUpdate(customerDto);
         customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), today, true, customerDetailsDto));
         //maybe redirect to the page where all details are
-        redirectAttributes.addFlashAttribute("message", "Add Product Name: " + customerDto.getEmail() + " is Done");
+        redirectAttributes.addFlashAttribute("message", "Customer with email: " + customerDto.getEmail() + " is Added");
         redirectAttributes.addFlashAttribute("alertClass","alert-success");
         return "redirect:/customer/";
     }
@@ -148,6 +149,15 @@ public class HomeController {
         customerDetailsDtoList.add(customerDetailsDto);
         System.out.println(customerDetailsDtoList.toString());
         return "redirect:/details/";
+    }
+
+
+    @GetMapping("/customer/delete/{id}")
+    public String deleteById(@PathVariable("id") String id, RedirectAttributes redirectAttributes){
+        customerService.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "Delete Customer ID: " + id + " is Completed");
+        redirectAttributes.addFlashAttribute("alertClass","alert-info");
+        return "redirect:/customer/";
     }
 
 
