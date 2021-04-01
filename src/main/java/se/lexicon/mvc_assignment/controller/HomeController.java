@@ -140,6 +140,9 @@ public class HomeController {
     @GetMapping("/details")
     public String details(Model model) {
         System.out.println("--- GetMapping details ---");
+        CustomerDto dto = new CustomerDto();
+        model.addAttribute("dto", dto);
+
         return "details";
     }
 
@@ -158,14 +161,36 @@ public class HomeController {
         System.out.println("Create new Customer");
 
         if (!customerDto.getEmail().equals("")) {
+            System.out.println(customerDto.toString());
+            System.out.println(customerDto.getCustomerDetailsDto().getStreet());
+            System.out.println("\n");
+            System.out.println(customerDto.getEmail());
 
+            //customerService.saveOrUpdate(customerDto);
+
+            customerDto.setEmail(customerDto.getEmail());
+            customerDto.setActive(true);
+            //default UUID it will be overwritten on insert
+            String id = "123e4567-e89b-12d3-a456-556642440000";
+            customerDto.setCustomerId(id);
+            customerDto.setRegDate(LocalDate.now());
+            //customerDto.setCustomerDetailsDto(customerDto.getCustomerDetailsDto());
+
+
+
+
+            //customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), customerDto.getRegDate(), true, customerDto.getCustomerDetailsDto()));
         }
+
+
 
         /*
         if (bindingResult.hasErrors()) {
             return "/details";
         }
         */
+
+        //customerService.saveOrUpdate(customerDto);
 
         return "redirect:/customer/";
     }
