@@ -69,7 +69,7 @@ public class Customer {
         this.regDate = regDate;
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 

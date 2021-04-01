@@ -12,39 +12,50 @@
 <div class="container">
     <div class="card">
         <div class="card-header bg-info">
-            <h2> Register details: </h2>
+            <h2> Register a new Customer: </h2>
         </div>
 
         <div class="card-body">
             <form th:action="@{/details}" method="post">
 
-                <div class="form-group">
-                    <label for="street"> Street: </label>
-                    <input type="text" class="form-control" id="street" placeholder="Street Name" name="street">
-                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label for="street"> Street: </label>
+                            <input type="text" class="form-control" id="street" placeholder="Street Name" name="street">
+                        </div>
 
-                <div class="form-group">
-                    <label for="zipCode"> Zip Code: </label>
-                    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" name="zipCode">
-                </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="zipCode"> Zip Code: </label>
+                            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code" name="zipCode">
+                        </div>
 
-                <div class="form-group">
-                    <label for="city"> City: </label>
-                    <input type="text" class="form-control" id="city" placeholder="City" name="city">
-                </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="city"> City: </label>
+                            <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                        </div>
 
-                <div class="form-group">
-                    <label for="homePhone"> Home phone: </label>
-                    <input type="text" class="form-control" id="homePhone" placeholder="Home phone" name="homePhone">
-                </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="homePhone"> Home phone: </label>
+                            <input type="text" class="form-control" id="homePhone" placeholder="Home phone"
+                                   name="homePhone">
+                        </div>
 
-                <div class="form-group">
-                    <label for="cellphone"> Mobile: </label>
-                    <input type="text" class="form-control" id="cellphone" placeholder="Mobile phone" name="cellphone">
-                </div>
 
-                <button type="submit" class="btn btn-primary mb-3" data-toggle="modal" data-target="#myModal"> Register
-                </button>
+                        <div class="col-sm-6 form-group">
+                            <label for="cellphone"> Mobile: </label>
+                            <input type="text" class="form-control" id="cellphone" placeholder="Mobile phone"
+                                   name="cellphone">
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-block mb-3" data-toggle="modal"
+                            data-target="#myModal">
+                        Register
+                    </button>
+
+                </div>
             </form>
         </div>
     </div>
