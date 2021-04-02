@@ -23,27 +23,32 @@
                         <div class="col-sm-6 form-group">
                             <label for="email"> Email: </label>
                             <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
                         </div>
 
                         <div class="col-sm-6 form-group">
                             <label for="street"> Street: </label>
                             <input type="text" th:field="*{customerDetailsDto.street}" class="form-control" id="street" placeholder="Street Name" name="street">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.street')}" th:errors="*{customerDetailsDto.street}"></p>
                         </div>
 
                         <div class="col-sm-6 form-group">
                             <label for="zipCode"> Zip Code: </label>
                             <input type="text" th:field="*{customerDetailsDto.zipCode}" class="form-control" id="zipCode" placeholder="Zip Code" name="zipCode">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.zipCode')}" th:errors="*{customerDetailsDto.zipCode}"></p>
                         </div>
 
                         <div class="col-sm-6 form-group">
                             <label for="city"> City: </label>
                             <input type="text" th:field="*{customerDetailsDto.city}" class="form-control" id="city" placeholder="City" name="city">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.city')}" th:errors="*{customerDetailsDto.city}"></p>
                         </div>
 
                         <div class="col-sm-6 form-group">
                             <label for="homePhone"> Home phone: </label>
                             <input type="text" th:field="*{customerDetailsDto.homePhone}" class="form-control" id="homePhone" placeholder="Home phone"
                                    name="homePhone">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.homePhone')}" th:errors="*{customerDetailsDto.homePhone}"></p>
                         </div>
 
 
@@ -51,6 +56,7 @@
                             <label for="cellphone"> Mobile: </label>
                             <input type="text" th:field="*{customerDetailsDto.cellphone}" class="form-control" id="cellphone" placeholder="Mobile phone"
                                    name="cellphone">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.cellphone')}" th:errors="*{customerDetailsDto.cellphone}"></p>
                         </div>
                     </div>
 

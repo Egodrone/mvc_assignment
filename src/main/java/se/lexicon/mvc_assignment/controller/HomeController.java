@@ -79,6 +79,31 @@ public class HomeController {
     public String addDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Create new Customer");
 
+        if (customerDto.getCustomerDetailsDto().getStreet().isEmpty()) {
+            FieldError error= new FieldError("dto","customerDetailsDto.street","Street should not be empty");
+            bindingResult.addError(error);
+        }
+
+        if (customerDto.getCustomerDetailsDto().getZipCode().isEmpty()) {
+            FieldError error= new FieldError("dto","customerDetailsDto.zipCode","Zip Code should not be empty");
+            bindingResult.addError(error);
+        }
+
+        if (customerDto.getCustomerDetailsDto().getCity().isEmpty()) {
+            FieldError error= new FieldError("dto","customerDetailsDto.city","City should not be empty");
+            bindingResult.addError(error);
+        }
+
+        if (customerDto.getCustomerDetailsDto().getHomePhone().isEmpty()) {
+            FieldError error= new FieldError("dto","customerDetailsDto.homePhone","Home Phone should not be empty");
+            bindingResult.addError(error);
+        }
+
+        if (customerDto.getCustomerDetailsDto().getCellphone().isEmpty()) {
+            FieldError error= new FieldError("dto","customerDetailsDto.cellphone","Mobile phone should not be empty");
+            bindingResult.addError(error);
+        }
+
         if (!customerDto.getEmail().equals("") ) {
             System.out.println("\n");
             System.out.println(customerDto.getEmail());
@@ -95,6 +120,10 @@ public class HomeController {
             System.out.println(customerDto.getCustomerDetailsDto().getStreet());
 
             customerService.saveOrUpdate(customerDto);
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "details";
         }
 
         return "redirect:/customer/";
