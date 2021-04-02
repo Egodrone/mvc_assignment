@@ -37,12 +37,9 @@ public class HomeController {
         if (customerDtoList == null) customerDtoList = new ArrayList<>();
         if (customerDetailsDtoList == null) customerDetailsDtoList = new ArrayList<>();
 
-        //simple test
-        //String "123e4567-e89b-12d3-a456-556642440000", String "gg@gmail.com", LocalDate
         CustomerDto customerDto = new CustomerDto();
         CustomerDetailsDto customerDetailsDto = new CustomerDetailsDto();
 
-        //another test
         Customer customer = new Customer();
         CustomerDetails customerDetails = new CustomerDetails();
     }
@@ -57,53 +54,6 @@ public class HomeController {
     @GetMapping("/index")
     public String index() {
         return "index";
-    }
-
-
-    @PostMapping("/customer")
-    public String add(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult,
-                      RedirectAttributes redirectAttributes) {
-
-        /*
-        if (bindingResult.hasErrors()){
-            System.out.println(bindingResult.toString());
-            FieldError error = new FieldError("dto","email","Email should not contain less than 6 or more than 35 characters");
-            bindingResult.addError(error);
-            return "/customer";
-        }
-        */
-        customerDtoList.add(customerDto);
-        System.out.println(customerDtoList.toString());
-
-        //test to fill with some data
-        // Customer info
-        customerDto.setActive(true);
-        String id = "123e4567-e89b-12d3-a456-556642440000";
-        customerDto.setCustomerId(id);
-        LocalDate today = LocalDate.now();
-        //LocalDate.parse("2021-03-31");
-        customerDto.setRegDate(today);
-        customerDto.getCustomerDetailsDto();
-
-        // Customer Details dto
-        CustomerDetailsDto customerDetailsDto = new CustomerDetailsDto();
-        customerDetailsDto.setDetailsId(id);
-        String zip = "89182982";
-        customerDetailsDto.setZipCode(zip);
-        String strName = "Name of the str";
-        customerDetailsDto.setStreet(strName);
-        customerDetailsDto.setHomePhone(zip);
-        customerDetailsDto.setCellphone(zip);
-        String city = "City name";
-        customerDetailsDto.setCity(city);
-
-        // save to the db
-        //customerService.saveOrUpdate(customerDto);
-        customerService.saveOrUpdate(new CustomerDto(id, customerDto.getEmail(), today, true, customerDetailsDto));
-        //maybe redirect to the page where all details are
-        redirectAttributes.addFlashAttribute("message", "Customer with email: " + customerDto.getEmail() + " is Added");
-        redirectAttributes.addFlashAttribute("alertClass","alert-success");
-        return "redirect:/customer/";
     }
 
 
@@ -129,7 +79,7 @@ public class HomeController {
     public String addDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Create new Customer");
 
-        if (!customerDto.getEmail().equals("")) {
+        if (!customerDto.getEmail().equals("") ) {
             System.out.println("\n");
             System.out.println(customerDto.getEmail());
 
@@ -147,16 +97,8 @@ public class HomeController {
             customerService.saveOrUpdate(customerDto);
         }
 
-        /*
-        if (bindingResult.hasErrors()) {
-            return "/details";
-        }
-        */
-
         return "redirect:/customer/";
     }
-
-
 
 
     @GetMapping("/customer/delete/{id}")
@@ -164,6 +106,7 @@ public class HomeController {
         customerService.deleteById(id);
         redirectAttributes.addFlashAttribute("message", "Delete Customer ID: " + id + " is Completed");
         redirectAttributes.addFlashAttribute("alertClass","alert-info");
+
         return "redirect:/customer/";
     }
 

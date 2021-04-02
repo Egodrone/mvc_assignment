@@ -19,31 +19,22 @@
         </div>
     </div>
 
-        <div class="card">
-
-            <div class="card-body">
-
-                <div>
-                    <p> ID: <span th:text="${customerDto.getCustomerId()}"></span></p>
-                    <p> Email: <span th:text="${customerDto.getEmail()}"></span></p>
-                    <p> Active: <span ></span></p>
-                    <p> Details ID: <span th:text="${customerDto.getCustomerDetailsDto().getDetailsId()}"></span></p>
-                    <p> Street: <span th:text="${customerDto.getCustomerDetailsDto().getStreet()}"></span></p>
-                    <p> Zip Code: <span th:text="${customerDto.getCustomerDetailsDto().getZipCode()}"></span></p>
-                    <p> City: <span th:text="${customerDto.getCustomerDetailsDto().getCity()}"></span></p>
-                    <p> Home Phone: <span th:text="${customerDto.getCustomerDetailsDto().getHomePhone()}"></span></p>
-                    <p> Mobile Phone: <span th:text="${customerDto.getCustomerDetailsDto().getCellphone()}"></span></p>
-                </div>
-
-
-            </div>
-
-            <div class="card-footer">
-                <a href="#" class="btn btn-danger">Back</a>
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <p> ID: <span th:text="${customerDto.getCustomerId()}"></span></p>
+                <p> Email: <span th:text="${customerDto.getEmail()}"></span></p>
+                <p> Active: <span></span></p>
+                <p> Details ID: <span th:text="${customerDto.getCustomerDetailsDto().getDetailsId()}"></span></p>
+                <p> Street: <span th:text="${customerDto.getCustomerDetailsDto().getStreet()}"></span></p>
+                <p> Zip Code: <span th:text="${customerDto.getCustomerDetailsDto().getZipCode()}"></span></p>
+                <p> City: <span th:text="${customerDto.getCustomerDetailsDto().getCity()}"></span></p>
+                <p> Home Phone: <span th:text="${customerDto.getCustomerDetailsDto().getHomePhone()}"></span></p>
+                <p> Mobile Phone: <span th:text="${customerDto.getCustomerDetailsDto().getCellphone()}"></span></p>
             </div>
         </div>
+    </div>
 </div>
-
 
 
 <!-- footer -->
