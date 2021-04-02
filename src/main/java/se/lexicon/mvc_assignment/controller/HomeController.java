@@ -129,6 +129,17 @@ public class HomeController {
             bindingResult.addError(error);
         }
 
+        // Check for the numbers if needed
+        /*
+        try {
+            //double d = Double.parseDouble(customerDto.getCustomerDetailsDto().getCellphone());
+            int a = Integer.parseInt(customerDto.getCustomerDetailsDto().getCellphone());
+        } catch (NumberFormatException e) {
+            FieldError error2 = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should be a number");
+            bindingResult.addError(error2);
+        }
+        */
+
         if (bindingResult.hasErrors()) {
 
             return "details";
