@@ -61,6 +61,7 @@ public class HomeController {
     public String customer(Model model) {
         System.out.println("--- GetMapping ---");
         model.addAttribute("customerDtoList", customerService.getAll());
+
         return "customer";
     }
 
@@ -161,6 +162,9 @@ public class HomeController {
             customerService.saveOrUpdate(customerDto);
         }
 
+        redirectAttributes.addFlashAttribute("message", "New record was created in the database. User with email: " + customerDto.getEmail() + " was created.");
+        redirectAttributes.addFlashAttribute("alertClass", "alert-info");
+
         return "redirect:/customer/";
     }
 
@@ -168,7 +172,7 @@ public class HomeController {
     @GetMapping("/customer/delete/{id}")
     public String deleteById(@PathVariable("id") String id, RedirectAttributes redirectAttributes) {
         customerService.deleteById(id);
-        redirectAttributes.addFlashAttribute("message", "Delete Customer ID: " + id + " is Completed");
+        redirectAttributes.addFlashAttribute("message", "User with Customer ID: " + id + " was removed from the database");
         redirectAttributes.addFlashAttribute("alertClass", "alert-info");
 
         return "redirect:/customer/";
@@ -190,6 +194,14 @@ public class HomeController {
     public String edit(@PathVariable("id") String id, Model model) {
         CustomerDto optionalCustomerDto = customerService.findById(id);
         model.addAttribute("customerDto", optionalCustomerDto);
+        model.addAttribute("customerDtoList", customerService.getAll());
+
+        return "edit";
+    }
+
+    @GetMapping("/edit")
+    public String editPage(Model model) {
+        model.addAttribute("customerDtoList", customerService.getAll());
 
         return "edit";
     }

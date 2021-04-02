@@ -11,6 +11,21 @@
 <!-- main container -->
 <div class="container bg-dark text-white">
     <div class="card">
+        <div class="card-header card bg-info text-white">
+            <h2> Edit Customer and details </h2>
+            <p>
+                <a th:href="@{/customer}" class="btn btn-dark text-white"> Go back </a>
+            </p>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div th:if="${customerDtoList.isEmpty()}">
+            <b> No Customer id was send. Please register a new Customer or choose one from the list on the customer page </b>
+        </div>
+    </div>
+
+    <div class="card" th:unless="${customerDtoList.isEmpty()}">
         <div class="card-header bg-info">
             <h2> Edit existing customer and details: </h2>
         </div>
