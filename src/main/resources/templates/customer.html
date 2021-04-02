@@ -19,7 +19,7 @@
 
         <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 
-        <div class="card-body">
+        <div class="card-body errMsg">
             <div th:if="${customerDtoList.isEmpty()}">
                 <b> No Customers are Available </b>
             </div>

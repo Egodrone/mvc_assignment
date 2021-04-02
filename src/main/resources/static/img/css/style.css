@@ -8,23 +8,28 @@ body {
 }
 
 .container {
-    height: 600px;
     margin-top: 50px;
     border-radius: 10px;
 }
 
 .indexContainer {
-    height: 600px;
     margin-top: 50px;
     /*opacity: 0.8;*/
     border-radius: 10px;
 }
 
 .customerContainer {
-    height: 600px;
     margin-top: 50px;
     /*opacity: 0.9;*/
     border-radius: 10px;
+}
+
+.card-body {
+    margin-bottom: 80px;
+}
+
+.errMsg {
+    margin-bottom: -20px;
 }
 
 footer {
