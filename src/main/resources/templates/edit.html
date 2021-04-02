@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/headerResources :: header_resources"></head>
+
+
+<body>
+<!-- header -->
+<nav th:insert="fragments/navbar :: nav_fragment"></nav>
+
+
+<!-- main container -->
+<div class="container bg-dark text-white">
+    <div class="card">
+        <div class="card-header bg-info">
+            <h2> Edit existing customer and details: </h2>
+        </div>
+
+        <div class="card-body">
+            <form th:action="@{/edit}" method="post" th:object="${customerDto}">
+
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label for="email"> Email: </label>
+                            <input type="email" th:field="*{email}" class="form-control" id="email" th:placeholder="${customerDto.getEmail()}" name="email">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="street"> Street: </label>
+                            <input type="text" th:field="*{customerDetailsDto.street}" class="form-control" id="street"
+                                   th:placeholder="${customerDto.getCustomerDetailsDto().getStreet()}" name="street">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.street')}" th:errors="*{customerDetailsDto.street}"></p>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="zipCode"> Zip Code: </label>
+                            <input type="text" th:field="*{customerDetailsDto.zipCode}" class="form-control" id="zipCode"
+                                   th:placeholder="${customerDto.getCustomerDetailsDto().getZipCode()}" name="zipCode">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.zipCode')}" th:errors="*{customerDetailsDto.zipCode}"></p>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="city"> City: </label>
+                            <input type="text" th:field="*{customerDetailsDto.city}" class="form-control" id="city"
+                                   th:placeholder="${customerDto.getCustomerDetailsDto().getCity()}" name="city">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.city')}" th:errors="*{customerDetailsDto.city}"></p>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <label for="homePhone"> Home phone: </label>
+                            <input type="text" th:field="*{customerDetailsDto.homePhone}" class="form-control" id="homePhone"
+                                   th:placeholder="${customerDto.getCustomerDetailsDto().getHomePhone()}"
+                                   name="homePhone">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.homePhone')}" th:errors="*{customerDetailsDto.homePhone}"></p>
+                        </div>
+
+
+                        <div class="col-sm-6 form-group">
+                            <label for="cellphone"> Mobile: </label>
+                            <input type="text" th:field="*{customerDetailsDto.cellphone}" class="form-control" id="cellphone"
+                                   th:placeholder="${customerDto.getCustomerDetailsDto().getCellphone()}"
+                                   name="cellphone">
+                            <p class="alert alert-danger" th:if="${#fields.hasErrors('customerDetailsDto.cellphone')}" th:errors="*{customerDetailsDto.cellphone}"></p>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-block mb-3" data-toggle="modal"
+                            data-target="#myModal">
+                        Register
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- footer -->
+<footer th:insert="fragments/footer :: footer_fragment"></footer>
+
+</body>
+</html>

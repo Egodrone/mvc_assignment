@@ -56,7 +56,8 @@
                            th:href="@{/customer/find/{id} (id=${customerDto.getCustomerId()})}"> Details</a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a th:href="@{/customer/edit/{id} (id=${customerDto.getCustomerId()})}" class="btn btn-warning">Edit</a>
+
                     </td>
                     <td>
                         <a href="#" class="btn btn-danger"
