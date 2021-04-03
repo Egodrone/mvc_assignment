@@ -17,11 +17,13 @@
             </p>
         </div>
 
-        <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+        <div class="card-body errMsg">
+            <div class="alert alert-success" th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+        </div>
 
         <div class="card-body errMsg">
-            <div th:if="${customerDtoList.isEmpty()}">
-                <b> No Customers are Available </b>
+            <div class="alert alert-warning" th:if="${customerDtoList.isEmpty()}">
+                <strong> No Customers are Available </strong>
             </div>
         </div>
 
@@ -79,7 +81,8 @@
             </table>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -92,15 +95,21 @@
                             Do you really want to remove this Customer and delete all data from the database?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close </button>
-                            <button type="button" class="btn btn-danger"> Delete </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"> Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
+<script>
+    let x = 0;
+    console.log(x);
+</script>
 
 
 <!-- footer -->
