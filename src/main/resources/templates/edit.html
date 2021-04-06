@@ -26,15 +26,18 @@
     </div>
 
     <div class="card" th:unless="${customerDtoList.isEmpty()}">
-        <div class="card-header bg-info">
-            <h2> Edit existing customer and details: </h2>
-        </div>
 
         <div class="card-body">
             <form th:action="@{/edit}" method="post" th:object="${customerDto}">
 
                 <div class="col-sm-12">
                     <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label for="customerId"> Id: </label>
+                            <label th:text="*{customerId}" class="form-control" id="customerId" name="customerId"></label>
+                            <input type="hidden" th:field="*{customerId}">
+                        </div>
+
                         <div class="col-sm-6 form-group">
                             <label for="email"> Email: </label>
                             <input type="email" th:field="*{email}" class="form-control" id="email" th:placeholder="${customerDto.getEmail()}" name="email">
@@ -83,7 +86,7 @@
 
                     <button type="submit" class="btn btn-primary btn-block mb-3" data-toggle="modal"
                             data-target="#myModal">
-                        Register
+                        Save Changes
                     </button>
 
                 </div>

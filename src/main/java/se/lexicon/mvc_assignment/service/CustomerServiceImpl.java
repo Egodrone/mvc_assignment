@@ -38,6 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (customerDto == null) throw new IllegalArgumentException("customerDto is not valid");
 
         Customer convertDtoToModel = customerConverter.toModel(customerDto);
+        // if customer id == null    jpa repository calls save method otherwise it calls update
         Customer savedObject = customerRepository.save(convertDtoToModel);
 
         return customerConverter.toDTO(savedObject);

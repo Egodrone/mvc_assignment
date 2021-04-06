@@ -66,41 +66,44 @@
                            th:href="@{/customer/delete/{id} (id=${customerDto.getCustomerId()})}"> Delete</a>
                         -->
                         <!-- Button trigger modal -->
-                        <!--
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
+                                th:attrappend="data-target=${customerDto.customerId}">
                             Delete
                         </button>
-                        -->
-                        <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" th:attrappend="id=${customerDto.customerId}" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle"> Delete Information </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you really want to remove this Customer <span  th:text="${customerDto.getCustomerId()}"></span>and delete all data from the database?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
+                                        <a type="button" class="btn btn-danger" th:href="@{/customer/delete/{id} (id=${customerDto.getCustomerId()})}"> Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<!--                        <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
                            th:href="@{/customer/delete/{id} (id=${customerDto.getCustomerId()})}">
                             Delete
-                        </a>
+                        </a>-->
                     </td>
                 </tr>
                 </tbody>
             </table>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle"> Delete Information </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Do you really want to remove this Customer and delete all data from the database?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"> Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </div>

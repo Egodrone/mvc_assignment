@@ -59,7 +59,6 @@ public class HomeController {
 
     @GetMapping("/customer")
     public String customer(Model model) {
-        System.out.println("--- GetMapping ---");
         model.addAttribute("customerDtoList", customerService.getAll());
 
         return "customer";
@@ -68,7 +67,6 @@ public class HomeController {
 
     @GetMapping("/details")
     public String details(Model model) {
-        System.out.println("--- GetMapping details ---");
         CustomerDto dto = new CustomerDto();
         model.addAttribute("dto", dto);
 
@@ -210,7 +208,7 @@ public class HomeController {
     //edit
     @PostMapping("/edit")
     public String editDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        System.out.println("Create new Customer");
+        System.out.println("Edit Customer");
 
         if (customerDto.getCustomerDetailsDto().getStreet().isEmpty()) {
             FieldError error = new FieldError("dto", "customerDetailsDto.street", "Street should not be empty");
@@ -284,8 +282,8 @@ public class HomeController {
             customerDto.setActive(true);
 
             //default UUID it will be overwritten on insert
-            String id = "123e4567-e89b-12d3-a456-556642440000";
-            customerDto.setCustomerId(id);
+            //String id = "123e4567-e89b-12d3-a456-556642440000";
+            //customerDto.setCustomerId(id);
             customerDto.setRegDate(LocalDate.now());
 
             System.out.println(customerDto.toString());
@@ -301,3 +299,4 @@ public class HomeController {
 
 
 }
+

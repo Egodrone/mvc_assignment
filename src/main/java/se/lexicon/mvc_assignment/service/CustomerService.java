@@ -17,4 +17,6 @@ public interface CustomerService {
     void deleteById(String id);
 
     List<CustomerDto> findByName(String name);
+
+    //CustomerDto updateCustomerInfo(CustomerDto customerDto);
 }
