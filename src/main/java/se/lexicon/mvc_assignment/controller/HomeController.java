@@ -280,17 +280,11 @@ public class HomeController {
 
             customerDto.setEmail(customerDto.getEmail());
             customerDto.setActive(true);
-
-            //default UUID it will be overwritten on insert
-            //String id = "123e4567-e89b-12d3-a456-556642440000";
-            //customerDto.setCustomerId(id);
             customerDto.setRegDate(LocalDate.now());
 
             System.out.println(customerDto.toString());
             System.out.println(customerDto.getCustomerDetailsDto().getStreet());
 
-            //create update by id later
-            //customerService.deleteById(customerDto.getCustomerId());
             customerService.saveOrUpdate(customerDto);
         }
 

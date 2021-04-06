@@ -61,19 +61,15 @@
 
                     </td>
                     <td>
-                        <!--
-                        <a href="#" class="btn btn-danger"
-                           th:href="@{/customer/delete/{id} (id=${customerDto.getCustomerId()})}"> Delete</a>
-                        -->
-                        <!-- Button trigger modal -->
 
+                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
                                 th:attrappend="data-target=${customerDto.customerId}">
                             Delete
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter" th:attrappend="id=${customerDto.customerId}" tabindex="-1" role="dialog"
+                        <div class="modal fade text-dark" id="exampleModalCenter" th:attrappend="id=${customerDto.customerId}" tabindex="-1" role="dialog"
                              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -84,7 +80,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Do you really want to remove this Customer <span  th:text="${customerDto.getCustomerId()}"></span>and delete all data from the database?
+                                        Do you really want to remove this Customer <span th:text="${customerDto.getCustomerId()}"></span>and delete all data from the database?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
@@ -93,26 +89,13 @@
                                 </div>
                             </div>
                         </div>
-
-<!--                        <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"
-                           th:href="@{/customer/delete/{id} (id=${customerDto.getCustomerId()})}">
-                            Delete
-                        </a>-->
                     </td>
                 </tr>
                 </tbody>
             </table>
-
-
-
         </div>
     </div>
 </div>
-
-<script>
-    let x = 0;
-    console.log(x);
-</script>
 
 
 <!-- footer -->
