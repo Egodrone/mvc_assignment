@@ -1,6 +1,7 @@
 package se.lexicon.mvc_assignment.dto;
 
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public class CustomerDto {
     private String email;
     private LocalDate regDate;
     private boolean active;
+    @Valid
     private CustomerDetailsDto customerDetailsDto;
 
     public CustomerDto() {

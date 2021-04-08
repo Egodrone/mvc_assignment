@@ -78,56 +78,6 @@ public class HomeController {
     public String addDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Create new Customer");
 
-        if (customerDto.getCustomerDetailsDto().getStreet().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.street", "Street should not be empty");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getStreet().length() > 30 || customerDto.getCustomerDetailsDto().getStreet().length() < 3) {
-            FieldError error2 = new FieldError("dto", "customerDetailsDto.street", "Street must be between 3 and 30 characters");
-            bindingResult.addError(error2);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getZipCode().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.zipCode", "Zip Code should not be empty");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getZipCode().length() > 20 || customerDto.getCustomerDetailsDto().getZipCode().length() < 3) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.zipCode", "Zip Code must be between 3 and 20 characters");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getCity().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.city", "City should not be empty");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getCity().length() > 20 || customerDto.getCustomerDetailsDto().getCity().length() < 3) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.city", "City should be between 3 and 20 characters");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getHomePhone().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.homePhone", "Home Phone should not be empty");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getHomePhone().length() > 10 || customerDto.getCustomerDetailsDto().getHomePhone().length() < 6) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.homePhone", "Home Phone should be between 6 and 10 numbers");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getCellphone().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should not be empty");
-            bindingResult.addError(error);
-        }
-
-        if (customerDto.getCustomerDetailsDto().getCellphone().length() > 10 || customerDto.getCustomerDetailsDto().getCellphone().length() < 6) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should be between 6 and 10 numbers");
-            bindingResult.addError(error);
-        }
-
         // Check for the numbers if needed
         /*
         try {
@@ -143,24 +93,13 @@ public class HomeController {
 
             return "details";
         } else {
-            System.out.println("\n");
-            System.out.println(customerDto.getEmail());
-
-            customerDto.setEmail(customerDto.getEmail());
             customerDto.setActive(true);
-
-            //default UUID it will be overwritten on insert
-            String id = "123e4567-e89b-12d3-a456-556642440000";
-            customerDto.setCustomerId(id);
             customerDto.setRegDate(LocalDate.now());
-
-            System.out.println(customerDto.toString());
-            System.out.println(customerDto.getCustomerDetailsDto().getStreet());
-
             customerService.saveOrUpdate(customerDto);
         }
 
-        redirectAttributes.addFlashAttribute("message", "New record was created in the database. User with email: " + customerDto.getEmail() + " was created.");
+        redirectAttributes.addFlashAttribute("message", "New record was created in the database. User with email: "
+                + customerDto.getEmail() + " was created.");
         redirectAttributes.addFlashAttribute("alertClass", "alert-info");
 
         return "redirect:/customer/";
@@ -207,59 +146,59 @@ public class HomeController {
 
     //edit
     @PostMapping("/edit")
-    public String editDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String editDetails(@ModelAttribute("customerDto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Edit Customer");
-
+        /*
         if (customerDto.getCustomerDetailsDto().getStreet().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.street", "Street should not be empty");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.street", "Street should not be empty");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getStreet().length() > 30 || customerDto.getCustomerDetailsDto().getStreet().length() < 3) {
-            FieldError error2 = new FieldError("dto", "customerDetailsDto.street", "Street must be between 3 and 30 characters");
+            FieldError error2 = new FieldError("customerDto", "customerDetailsDto.street", "Street must be between 3 and 30 characters");
             bindingResult.addError(error2);
         }
 
         if (customerDto.getCustomerDetailsDto().getZipCode().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.zipCode", "Zip Code should not be empty");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.zipCode", "Zip Code should not be empty");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getZipCode().length() > 20 || customerDto.getCustomerDetailsDto().getZipCode().length() < 3) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.zipCode", "Zip Code must be between 3 and 20 characters");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.zipCode", "Zip Code must be between 3 and 20 characters");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getCity().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.city", "City should not be empty");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.city", "City should not be empty");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getCity().length() > 20 || customerDto.getCustomerDetailsDto().getCity().length() < 3) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.city", "City should be between 3 and 20 characters");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.city", "City should be between 3 and 20 characters");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getHomePhone().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.homePhone", "Home Phone should not be empty");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.homePhone", "Home Phone should not be empty");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getHomePhone().length() > 10 || customerDto.getCustomerDetailsDto().getHomePhone().length() < 6) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.homePhone", "Home Phone should be between 6 and 10 numbers");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.homePhone", "Home Phone should be between 6 and 10 numbers");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getCellphone().isEmpty()) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should not be empty");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.cellphone", "Mobile phone should not be empty");
             bindingResult.addError(error);
         }
 
         if (customerDto.getCustomerDetailsDto().getCellphone().length() > 10 || customerDto.getCustomerDetailsDto().getCellphone().length() < 6) {
-            FieldError error = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should be between 6 and 10 numbers");
+            FieldError error = new FieldError("customerDto", "customerDetailsDto.cellphone", "Mobile phone should be between 6 and 10 numbers");
             bindingResult.addError(error);
         }
-
+        */
         // Check for the numbers if needed
         /*
         try {
@@ -275,15 +214,9 @@ public class HomeController {
 
             return "edit";
         } else {
-            System.out.println("\n");
-            System.out.println(customerDto.getEmail());
 
-            customerDto.setEmail(customerDto.getEmail());
             customerDto.setActive(true);
             customerDto.setRegDate(LocalDate.now());
-
-            System.out.println(customerDto.toString());
-            System.out.println(customerDto.getCustomerDetailsDto().getStreet());
 
             customerService.saveOrUpdate(customerDto);
         }

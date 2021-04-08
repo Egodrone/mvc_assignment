@@ -1,15 +1,30 @@
 package se.lexicon.mvc_assignment.dto;
 
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
 public class CustomerDetailsDto {
     private String detailsId;
+    @NotNull(message = "Street can't be null")
+    @NotEmpty(message = "Street should not be empty")
+    @Size(min = 3, max = 30, message = "Street must be between 3 and 30 characters")
     private String street;
+    @NotEmpty(message = "Zip Code can't be null")
+    @Size(min = 3, max = 20, message = "Zip Code must be between 3 and 20 characters")
     private String zipCode;
+    @NotEmpty(message = "City should not be empty")
+    @Size(min = 3, max = 20, message = "City must be between 3 and 20 characters")
     private String city;
+    @NotEmpty(message = "should not be empty")
+    @Size(min = 6, max = 10, message = "Home Phone should be between 6 and 10 numbers")
     private String homePhone;
+    @NotEmpty(message = "Mobile phone should not be empty")
+    @Size(min = 6, max = 10, message = "Mobile phone should be between 6 and 10 numbers")
     private String cellphone;
 
 
