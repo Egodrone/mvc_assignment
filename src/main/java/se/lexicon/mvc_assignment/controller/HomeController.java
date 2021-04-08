@@ -136,13 +136,6 @@ public class HomeController {
         return "edit";
     }
 
-    @GetMapping("/edit")
-    public String editPage(Model model) {
-        model.addAttribute("customerDtoList", customerService.getAll());
-
-        return "edit";
-    }
-
 
     //edit
     @PostMapping("/edit")
@@ -214,10 +207,8 @@ public class HomeController {
 
             return "edit";
         } else {
-
             customerDto.setActive(true);
             customerDto.setRegDate(LocalDate.now());
-
             customerService.saveOrUpdate(customerDto);
         }
 
