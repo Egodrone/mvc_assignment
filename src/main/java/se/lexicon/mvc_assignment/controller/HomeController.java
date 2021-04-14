@@ -141,6 +141,7 @@ public class HomeController {
     @PostMapping("/edit")
     public String editDetails(@ModelAttribute("customerDto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Edit Customer");
+
         /*
         if (customerDto.getCustomerDetailsDto().getStreet().isEmpty()) {
             FieldError error = new FieldError("customerDto", "customerDetailsDto.street", "Street should not be empty");
@@ -204,6 +205,7 @@ public class HomeController {
         */
 
         if (bindingResult.hasErrors()) {
+            System.out.println("error--------");
 
             return "edit";
         } else {
