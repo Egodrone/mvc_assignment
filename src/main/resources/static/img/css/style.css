@@ -1,26 +1,30 @@
 body {
     background-color: #e4f3ec;
-    background-image: url("../Kyvalda.png");
+    background-image: url("../office.jpg");
 }
 
 #nav_img {
     width: 40px;
 }
 
+.navbar {
+    opacity: 0.8;
+}
+
 .container {
     margin-top: 50px;
     border-radius: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 .indexContainer {
     margin-top: 50px;
-    /*opacity: 0.8;*/
     border-radius: 10px;
 }
 
 .customerContainer {
     margin-top: 50px;
-    /*opacity: 0.9;*/
     border-radius: 10px;
 }
 
@@ -37,5 +41,6 @@ footer {
     bottom: 0;
     height: 70px;
     width: 100%;
+    opacity: 0.8;
 }
 
