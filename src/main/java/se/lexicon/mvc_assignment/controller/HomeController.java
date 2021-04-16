@@ -78,16 +78,26 @@ public class HomeController {
     public String addDetails(@ModelAttribute("dto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Create new Customer");
 
-        // Check for the numbers if needed
-        /*
+        // Check if string is numerical
+        int a;
         try {
-            //double d = Double.parseDouble(customerDto.getCustomerDetailsDto().getCellphone());
-            int a = Integer.parseInt(customerDto.getCustomerDetailsDto().getCellphone());
+            a = Integer.parseInt(customerDto.getCustomerDetailsDto().getCellphone());
         } catch (NumberFormatException e) {
             FieldError error2 = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should be a number");
             bindingResult.addError(error2);
         }
-        */
+        try {
+            a = Integer.parseInt(customerDto.getCustomerDetailsDto().getZipCode());
+        } catch (NumberFormatException e) {
+            FieldError error3 = new FieldError("dto", "customerDetailsDto.zipCode", "Zip Code should be a number");
+            bindingResult.addError(error3);
+        }
+        try {
+            a = Integer.parseInt(customerDto.getCustomerDetailsDto().getHomePhone());
+        } catch (NumberFormatException e) {
+            FieldError error4 = new FieldError("dto", "customerDetailsDto.homePhone", "Home Phone should be a number");
+            bindingResult.addError(error4);
+        }
 
         if (bindingResult.hasErrors()) {
 
@@ -194,7 +204,7 @@ public class HomeController {
         }
         */
         // Check for the numbers if needed
-
+        /*
         try {
             //double d = Double.parseDouble(customerDto.getCustomerDetailsDto().getCellphone());
             int a = Integer.parseInt(customerDto.getCustomerDetailsDto().getCellphone());
@@ -202,7 +212,7 @@ public class HomeController {
             FieldError error2 = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should be a number");
             bindingResult.addError(error2);
         }
-
+        */
 
         if (bindingResult.hasErrors()) {
             System.out.println("error--------");
@@ -213,6 +223,10 @@ public class HomeController {
             customerDto.setRegDate(LocalDate.now());
             customerService.saveOrUpdate(customerDto);
         }
+
+        redirectAttributes.addFlashAttribute("message", "User user id: "
+                + customerDto.getCustomerId() + " was edited.");
+        redirectAttributes.addFlashAttribute("alertClass", "alert-info");
 
         return "redirect:/customer/";
     }
