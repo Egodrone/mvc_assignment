@@ -8,6 +8,7 @@
 - JPA-data
 - MySQL
 - H2
+- Lombok
 
 ```xml
 
