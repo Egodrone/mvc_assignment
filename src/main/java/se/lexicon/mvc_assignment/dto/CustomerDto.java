@@ -23,5 +23,5 @@ public class CustomerDto {
     private boolean active;
     @Valid
     private CustomerDetailsDto customerDetailsDto;
-
+    
 }

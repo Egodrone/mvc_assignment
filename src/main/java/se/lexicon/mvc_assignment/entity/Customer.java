@@ -22,7 +22,7 @@ public class Customer {
     private String email;
     @Column(nullable = false, length = 100)
     private LocalDate regDate;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean active;
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private CustomerDetails customerDetails;

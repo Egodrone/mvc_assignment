@@ -103,7 +103,7 @@ public class HomeController {
 
             return "details";
         } else {
-            customerDto.setActive(true);
+            //customerDto.setActive(true);
             customerDto.setRegDate(LocalDate.now());
             customerService.saveOrUpdate(customerDto);
         }
@@ -217,14 +217,15 @@ public class HomeController {
         if (bindingResult.hasErrors()) {
             System.out.println("error--------");
 
-            return "edit";
+            //return "edit";
+            return "redirect:/customer/edit/" + customerDto.getCustomerId();
         } else {
             customerDto.setActive(true);
             customerDto.setRegDate(LocalDate.now());
             customerService.saveOrUpdate(customerDto);
         }
 
-        redirectAttributes.addFlashAttribute("message", "User user id: "
+        redirectAttributes.addFlashAttribute("message", "User with Customer ID: "
                 + customerDto.getCustomerId() + " was edited.");
         redirectAttributes.addFlashAttribute("alertClass", "alert-info");
 
