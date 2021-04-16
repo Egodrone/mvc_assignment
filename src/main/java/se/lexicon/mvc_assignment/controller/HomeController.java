@@ -103,7 +103,6 @@ public class HomeController {
 
             return "details";
         } else {
-            //customerDto.setActive(true);
             customerDto.setRegDate(LocalDate.now());
             customerService.saveOrUpdate(customerDto);
         }
@@ -152,6 +151,7 @@ public class HomeController {
     public String editDetails(@ModelAttribute("customerDto") @Valid CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         System.out.println("Edit Customer");
 
+        // Custom validation
         /*
         if (customerDto.getCustomerDetailsDto().getStreet().isEmpty()) {
             FieldError error = new FieldError("customerDto", "customerDetailsDto.street", "Street should not be empty");
@@ -218,6 +218,8 @@ public class HomeController {
             System.out.println("error--------");
 
             //return "edit";
+            redirectAttributes.addFlashAttribute("message", "Invalid parameters were given, Try again!");
+            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
             return "redirect:/customer/edit/" + customerDto.getCustomerId();
         } else {
             customerDto.setActive(true);
