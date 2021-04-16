@@ -29,3 +29,20 @@
 
 </dependencies>
 ```
+
+#### Functionalities:
+- CRUD Operations
+- Validation for adding customers details
+
+
+### Customers view
+![customers](img/customer.png)
+
+### Add customer details
+![details](img/reg.png)
+
+### Validation
+![validation](img/Val.png)
+
+### View and remove record from the database
+![delete](img/del.png)

@@ -194,7 +194,7 @@ public class HomeController {
         }
         */
         // Check for the numbers if needed
-        /*
+
         try {
             //double d = Double.parseDouble(customerDto.getCustomerDetailsDto().getCellphone());
             int a = Integer.parseInt(customerDto.getCustomerDetailsDto().getCellphone());
@@ -202,7 +202,7 @@ public class HomeController {
             FieldError error2 = new FieldError("dto", "customerDetailsDto.cellphone", "Mobile phone should be a number");
             bindingResult.addError(error2);
         }
-        */
+
 
         if (bindingResult.hasErrors()) {
             System.out.println("error--------");
